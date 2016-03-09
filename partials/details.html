@@ -1,0 +1,18 @@
+<div ng-controller="detailsController" id="detailsContainer">
+	 <div ng-if="valid_rank">
+		<img ng-src="data/images/{{ curMovie.imdbID }}.jpg">
+		<a class="fa fa-chevron-circle-left" id="leftbtn" href="#/details/{{curMovie.rank-1}}"></a>
+	 	<a class="fa fa-chevron-circle-right" id="rightbtn" href="#/details/{{curMovie.rank+1}}"></a>
+	 	<span>
+		<h1>{{ curMovie.title }}</h1>
+		<h5>Rank: {{curMovie.rank }}</h5>
+		<h6>Released Date: {{curMovie.released }}</h6>
+		<h6>Duration: {{curMovie.runtime }}</h6>
+		<h6>Awards: {{curMovie.awards}}</h6>
+		<p> {{curMovie.plot }}</p>
+		</span>
+	 </div>
+	 <div ng-if="!valid_rank">
+	 	<h1>There is no such movie in the Top 250</h1>
+	 </div>
+</div>

@@ -1,0 +1,36 @@
+<div ng-controller="listController" id="listContainer">
+<!--     <div id="listTitle">
+    <h3>IMDB Top 250 Movie Directory</h3>
+    <a href="partials/list.html">Search</a>
+    <a href="partials/gallery.html">Gallery</a>
+    </div> -->
+    <div id="searchEngine">
+    	<form> 
+    		<h6>Keywords</h6>
+    		<input type="text" placeholder="Search for movies" ng-model="searchText">
+    		<h6>Sort by</h6>
+    		<!-- <input type="text" placeholder="Sort movies by" ng-model="sortBy"/> -->
+    		<select name="sortBy" ng-init="predicate='title'" ng-model="predicate">
+    			<option value="title">Title</option>
+    			<option value="rank">Rank</option>
+    		</select>
+    		<div class="radio"><input type="radio" name="order" checked ng-click="reverse=false">
+    		<span>ascending</span></div>
+    		<div class="radio"><input type="radio" name="order" class="radio" ng-click="reverse=true">
+    		<span>descending</span></div>
+    	</form>
+    </div>
+    <div id="searchResult">
+    	<ul>
+    		<li ng-repeat="movie in movies | filter:searchText | orderBy:predicate:reverse ">
+				<a href="#/details/{{movie.rank}}"><img ng-src="data/images/{{ movie.imdbID }}.jpg" ></a>
+				<div>
+					<h3 > <a href="#/details/{{movie.rank}}">{{ movie.title }} </a></h3>
+					<p>Rank: {{ movie.rank }}<p>
+				</div> 
+    		</li>
+    	</ul>
+    	
+    </div>
+
+</div>

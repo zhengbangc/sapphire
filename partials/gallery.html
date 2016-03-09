@@ -1,0 +1,29 @@
+<div ng-controller="galleryController" id="galleryContainer">
+
+<!--         {{myName}}
+    <ul>
+        <li ng-repeat="name in classdata.names">
+                {{name}}
+        </li>
+    </ul>
+    <input ng-model="inputValue"/>
+    <button class="button" ng-click="change()">Add</button>
+    <a href="#/list/1" class="button">Go to list</a> -->
+    <div id="genreList" class="row small-up-8">
+        <button class="column " ng-click="genre_filter=$">All</button>
+        <button class="column " ng-repeat="genre in genres" ng-click="$parent.genre_filter=genre">{{ genre }}</button>
+    </div>
+    
+    <div id="genreListSml">
+        <select ng-model="genre_filter_small">
+            <option value="$" ng-selected="true">All</option>
+            <option ng-repeat="genre in genres" value="{{genre}}">{{genre}}</option>
+        </select>
+    </div>
+    
+    <div id="imageContainer" class="row small-up-2 medium-up-3 large-up-6">
+        <div class="column small-centered" ng-repeat="movie in movies | filter: {genre: genre_filter}">
+            <a class='th' href="#/details/{{movie.rank}}"> <img ng-src="data/images/{{movie.imdbID}}.jpg"> </a>
+        </div>
+    </div>
+</div>
